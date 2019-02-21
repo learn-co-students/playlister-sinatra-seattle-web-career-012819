@@ -1,7 +1,12 @@
+<html>
+   <div>
+      <h3><%%></h3>
+      <h3><% @artist.name%></h3>
+      <h3><% @artist.each do |artist|%></h3>
+      <h3><%= artist.songs%></h3>
+      <h3><%end%></h3>
+  
+   </div>
+</html>
 
-<div>
-  <h3><%= @artist.name %></h3>
-  <p><%@artist.songs.each do |song|=></p>
-  <p><%=song.name%></p>
-  <p><%end%></p>
-</div>
+ 
