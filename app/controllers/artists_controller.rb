@@ -5,7 +5,8 @@ class ArtistsController < ApplicationController
     erb :'artists/index'
   end
 
-  get '/artists/:name' do
+  get '/artists/:slug' do
+    binding.pry
     erb :show
   end
 
