@@ -6,6 +6,10 @@ class SongsController < ApplicationController
     erb :index
   end
 
+  get 'songs/new' do
+    erb :new
+  end
+
   get '/songs/:id' do
     @song = Song.find(params[:id])
     erb :show

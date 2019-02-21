@@ -7,9 +7,9 @@
   <body>
     <h1><%= @genre.name.upcase %></h1>
     <% @genre.artists.sort_by { |artist| artist.name }.each do |artist| %>
-      <h3>Artist: <a href="/artist/<%= artist.id %>"><%= artist.name %></a></h3>
+      <h3>Artist: <a href="/artists/<%= artist.id %>"><%= artist.name %></a></h3>
         <% artist.songs.sort_by { |song| song.name }.each do |song| %>
-          <p><a href="/song/<%= song.id %>"><%= song.name %></a></p>
+          <p><a href="/songs/<%= song.id %>"><%= song.name %></a></p>
         <% end %>
     <% end %>
   </body>
