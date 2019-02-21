@@ -6,8 +6,8 @@ class ArtistsController < ApplicationController
   end
 
   get '/artists/:slug' do
-   artist_name = params[:slug].Titleize
-   erb :show
+    binding.pry
+    erb :show
   end
 
 
