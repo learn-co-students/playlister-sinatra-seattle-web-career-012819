@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>All the Genres!</h1>
+    <p><% @genres.sort_by { |genre| genre.name }.each do |genre| %></p>
+      <a href="/genres/<%= genre.id %>"><%= genre.name %></a>
+    <% end %>
+  </body>
+</html>
