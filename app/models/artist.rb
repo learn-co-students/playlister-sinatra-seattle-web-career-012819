@@ -6,5 +6,10 @@ class Artist < ActiveRecord::Base
     Slugifiable.slug(self.name)
   end
 
+  def self.find_by_slug(slug)
+    name = slug.Titleize
+    Artist.find(name: name)
+  end
+
 
 end
