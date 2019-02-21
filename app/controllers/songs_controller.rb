@@ -15,8 +15,10 @@ class SongsController < ApplicationController
     artist = Artist.find_or_create_by(name: params[:artist])
     song = Song.create(name: params[:name], artist_id: artist.id)
     #get genres
-    SongGenre.create(song_id: song.id, genre_id: )
-    redirect "songs/:id"
+    genre = params[:dance]
+    binding.pry
+    #SongGenre.create(song_id: song.id, genre_id: )
+    #redirect "songs/:id"
   end
 
   get "/songs/:id" do
