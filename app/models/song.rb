@@ -3,7 +3,7 @@ class Song <ActiveRecord::Base
   has_many :genres, through: :song_genres
   belongs_to :artist
 
- def slug 
+ def slug
     Slugifiable.slug(self.name)
   end
 
@@ -12,5 +12,7 @@ class Song <ActiveRecord::Base
       slug == song.slug 
     end
   end
+
+
 
 end

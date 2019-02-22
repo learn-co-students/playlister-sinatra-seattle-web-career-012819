@@ -26,7 +26,6 @@ class SongsController < ApplicationController
   end
 
   patch '/songs/:slug' do
-    binding.pry
     @artist.update(params[:name])
     redirect '/songs/show'
   end
