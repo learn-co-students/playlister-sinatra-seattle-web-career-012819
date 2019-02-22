@@ -51,7 +51,6 @@ class SongsController < ApplicationController
     songgenres.each do |ids|
       if ids.song_id == song.id
         ids.delete
-        ids.save
       end
     end
     genre_params.each do |k,v|
@@ -64,6 +63,7 @@ class SongsController < ApplicationController
     #update doesnt work
 
     slug_name = song.slug()
+    binding.pry
     #flash[:message] = "Successfully created song."
     redirect "/songs/#{slug_name}"
   end
