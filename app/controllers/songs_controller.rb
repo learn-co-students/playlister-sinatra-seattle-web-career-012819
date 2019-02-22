@@ -1,6 +1,9 @@
 class SongsController < ApplicationController
 
-  get '/songs/new' do
+  get '/songs/new' do 
+    @songs = Song.all 
+    @artists = Artist.all 
+    @genres = Genre.all 
     erb :'songs/new'
   end
 
@@ -15,7 +18,8 @@ class SongsController < ApplicationController
     erb :'songs/index'
   end
 
-  post '/songs' do
+  post '/songs' do 
+    binding.pry
     @song = Song.create(params)
     @slug = @song.slug
     redirect '/songs/@slug'
