@@ -14,7 +14,8 @@
   <br>
 
   <label for="name">Song Genre: </label>
-  <br><br>
+  <br><br> 
+  <%# hidden field with id to be able to find the song in the controller.  %>
   <% @genres.each do |genre| %>
     <%if @song_genre.include?(genre)%>
         <input type="checkbox" name="<%=genre.name%>" value=""checked>

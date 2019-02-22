@@ -43,7 +43,14 @@ class SongsController < ApplicationController
     erb :"songs/edit"
   end 
 
-
+    patch "/songs/:slug" do 
+      artist = Artist.find_or_create_by(name: params[:artist])
+      song = Song.find_by(name: params[:name], artist_id: artist.id)
+      #get genres
+      genre_params = params.reject {|k,v| k == "name" || k == "artist"}
+      genre_params.each do |k,v|
+      genre = Genre.find_by(name: k)
+      SongGenre.create(song_id: song.id, genre_id: genre.id)
 
 
 end
