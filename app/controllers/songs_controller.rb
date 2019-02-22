@@ -33,11 +33,12 @@ class SongsController < ApplicationController
 
   patch '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
-    @song.genres = params[:genres].map { |elmt| Genre.find(elmt.to_i) } if params[:genres]
-    @song.artist = params[:artist] if !(params[:artist].empty?)
+    @song.genres = params[:genres].map { |elmt| Genre.find_by(name: elmt) } if params[:genres]
+    @song.artist = Artist.find_or_create_by(name: params[:artist_name]
+      ) if !(params[:artist_name].empty?)
     @song.save
 
-    redirect "/songs/#{@new_song.slug}"
+    redirect "/songs/#{@song.slug}"
   end
 
 end

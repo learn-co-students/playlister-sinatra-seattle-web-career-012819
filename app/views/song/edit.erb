@@ -8,12 +8,12 @@
     <h1> You are editing: <%= @song.name %></h1>
     <form action="/songs/<%= @song.slug %>" method="post">
       <input type="hidden" name="_method" value="patch">
-      <label for="artist_name">Artist Name: </label>
-      <input type="text" name="artist_name" id="artist_name"> <br>
+      <label for="Artist Name">Artist Name: </label>
+      <input type="text" name="artist_name" id="Artist Name"> <br>
 
       <% @genres.each do |genre| %>
-        <label for="<%= genre.name %>"><%= genre.name.capitalize %> </label>
-        <input type="checkbox" name="genres[]" id="<%= genre.name %>" value="<%= genre.slug %>"> <br>
+        <label for="<%= genre.name %>"><%= genre.name %> </label>
+        <input type="checkbox" name="genres[]" id="<%= genre.name %>" value="<%= genre.name %>"> <br>
       <% end %>
 
       <input type="submit" value="Save">
