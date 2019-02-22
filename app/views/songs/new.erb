@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+<%if false%>
+
+<form action="/books" method="post">
+  <label for="title">Title</label>
+  <input type="text" name="title" value="" placeholder='title here'>
+  <label for="author">Author</label>
+  <select name='author_id'>
+      #<% @authors.each do |author|   %>
+        <option value="<%= author.id %>"><%= author.name %></option>
+      <% end %>
+  </select>
+  <label for="snippet">Snippet</label>
+  <input type="text" name="snippet" value="" placeholder='snippet here'>
+  <button type="submit">Create</button>
+</form> 
+
+<%end%>
