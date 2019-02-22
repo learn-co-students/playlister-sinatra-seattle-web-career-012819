@@ -1,0 +1,9 @@
+<% @genre_list.all.each do |genre| %>
+<!-- <ul>
+<li><label for="<%= genre.name %>"><%= genre.name %></label>
+  <input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>"><br></li>
+  </ul> -->
+  <li><h3><a href='/genres/<%= genre.slug %>'>
+  <%= genre.name %></a></h3></li>
+
+<% end %>
