@@ -7,6 +7,7 @@ class SongsController < ApplicationController
     end
 
     get '/songs/:slug' do
+        requested_song = Song.find_by_slug(params['slug'])
         #run slug logic
         erb :show
     end
