@@ -11,4 +11,13 @@ class SongsController < ApplicationController
     erb :'songs/show'
   end
 
+  get '/songs/:slug/edit' do
+    erb :'songs/edit'
+  end
+
+  patch '/songs/:slug/edit' do
+
+    redirect '/songs/show'
+  end
+
 end
