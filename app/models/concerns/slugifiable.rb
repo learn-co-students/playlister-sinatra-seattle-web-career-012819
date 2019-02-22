@@ -1,7 +1,7 @@
 class Slugifiable
 
    def self.slug(name)
-      name.split(" ").join("-")
+      name.downcase.split(" ").join("-")
    end
 
 end
