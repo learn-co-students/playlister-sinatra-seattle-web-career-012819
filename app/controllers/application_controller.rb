@@ -1,9 +1,9 @@
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   set :session_secret, "my_application_secret"
-  set :views, Proc.new { File.join(root, "../views/") }
+  # set :views, Proc.new { File.join(root, "../views/") }
 
   get '/' do
-    erb :index
+    erb '<a href="/songs">Visit All Songs</a>'
   end
 end

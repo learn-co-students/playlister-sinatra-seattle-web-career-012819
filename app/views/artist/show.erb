@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1><%= @artist.name.upcase %></h1>
+    <% @artist.genres.sort_by { |genre| genre.name }.each do |genre| %>
+      <h3>Genre: <a href="/genres/<%= genre.slug %>"><%= genre.name %></a></h3>
+        <% genre.songs.sort_by { |song| song.name }
+              .select { |song| song.artist == @artist }
+              .each do |song| %>
+          <p><a href="/songs/<%= song.slug %>"><%= song.name %></a></p>
+        <% end %>
+    <% end %>
+  </body>
+</html>
