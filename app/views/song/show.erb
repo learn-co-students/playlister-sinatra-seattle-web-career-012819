@@ -6,9 +6,9 @@
   </head>
   <body>
     <h1><%= @song.name %></h1>
-    <p>Artist Name: <a href="/artists/<%= @song.artist.id %>"><%= @song.artist.name %></p></a>
+    <p>Artist Name: <a href="/artists/<%= @song.artist.slug %>"><%= @song.artist.name %></p></a>
     <% @song.genres.each do |genre| %>
-      <p>Genre Name: <a href="/genres/<%= genre.id %>"><%= genre.name %></p></a>
+      <p>Genre Name: <a href="/genres/<%= genre.slug %>"><%= genre.name %></p></a>
     <% end %>
   </body>
 </html>

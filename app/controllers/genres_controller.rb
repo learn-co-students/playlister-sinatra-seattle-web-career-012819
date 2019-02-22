@@ -6,8 +6,8 @@ class GenresController < ApplicationController
     erb :index
   end
 
-  get '/genres/:id' do
-    @genre = Genre.find(params[:id])
+  get '/genres/:slug' do
+    @genre = Genre.find_by_slug(params[:slug])
     erb :show
   end
 end

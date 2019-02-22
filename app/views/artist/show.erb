@@ -7,11 +7,11 @@
   <body>
     <h1><%= @artist.name.upcase %></h1>
     <% @artist.genres.sort_by { |genre| genre.name }.each do |genre| %>
-      <h3>Genre: <a href="/genres/<%= genre.id %>"><%= genre.name %></a></h3>
+      <h3>Genre: <a href="/genres/<%= genre.slug %>"><%= genre.name %></a></h3>
         <% genre.songs.sort_by { |song| song.name }
               .select { |song| song.artist == @artist }
               .each do |song| %>
-          <p><a href="/songs/<%= song.id %>"><%= song.name %></a></p>
+          <p><a href="/songs/<%= song.slug %>"><%= song.name %></a></p>
         <% end %>
     <% end %>
   </body>

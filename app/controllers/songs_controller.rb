@@ -11,8 +11,8 @@ class SongsController < ApplicationController
     erb :new
   end
 
-  get '/songs/:id' do
-    @song = Song.find(params[:id])
+  get '/songs/:slug' do
+    @song = Song.find_by_slug(params[:slug])
     erb :show
   end
 
@@ -22,22 +22,22 @@ class SongsController < ApplicationController
     @new_song.genres = params[:genres].map { |elmt| Genre.find(elmt.to_i) }
     @new_song.save
 
-    redirect "/songs/#{@new_song.id}"
+    redirect "/songs/#{@new_song.slug}"
   end
 
-  get '/songs/:id/edit' do
-    @song = Song.find(params[:id])
+  get '/songs/:slug/edit' do
+    @song = Song.find_by_slug(params[:slug])
     @genres = Genre.all
     erb :edit
   end
 
-  patch '/songs/:id' do
-    @song = Song.find(params[:id])
+  patch '/songs/:slug' do
+    @song = Song.find_by_slug(params[:slug])
     @song.genres = params[:genres].map { |elmt| Genre.find(elmt.to_i) } if params[:genres]
     @song.artist = params[:artist] if !(params[:artist].empty?)
     @song.save
 
-    redirect "/songs/#{@new_song.id}"
+    redirect "/songs/#{@new_song.slug}"
   end
 
 end

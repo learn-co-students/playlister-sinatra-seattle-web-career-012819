@@ -7,7 +7,7 @@
   <body>
     <h1>All the Artists!</h1>
     <p><% @artists.sort_by { |artist| artist.name }.each do |artist| %></p>
-      <a href="/artists/<%= artist.id %>"><%= artist.name %></a>
+      <a href="/artists/<%= artist.slug %>"><%= artist.name %></a>
     <% end %>
 
   </body>
