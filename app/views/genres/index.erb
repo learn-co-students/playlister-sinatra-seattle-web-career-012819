@@ -3,7 +3,7 @@
 <li><label for="<%= genre.name %>"><%= genre.name %></label>
   <input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>"><br></li>
   </ul> -->
-  <h3><a href='/genres/<%= genre.name %>'>
-  <%= genre.name %></a></h3>
+  <li><h3><a href='/genres/<%= genre.slug %>'>
+  <%= genre.name %></a></h3></li>
 
 <% end %>

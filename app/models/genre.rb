@@ -3,13 +3,13 @@ class Genre < ActiveRecord::Base
   has_many :songs, through: :song_genres
   has_many :artists, through: :songs
 
- def slug 
+ def slug
     Slugifiable.slug(self.name)
   end
 
   def self.find_by_slug(slug)
     Genre.all.find do |genre|
-      slug == genre.slug 
+      slug == genre.slug
     end
   end
 
