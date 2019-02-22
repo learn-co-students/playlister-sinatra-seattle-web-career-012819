@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'pry'
 describe "Song Forms" do
   let(:artist_name) { "Person with a Face" }
   let(:genre_1_name) { "Hippity Hop" }
@@ -28,7 +28,7 @@ describe "Song Forms" do
         check "New Age Garbage"
         fill_in "Artist Name", with: artist_name
         click_on "Create"
-
+        # binding.pry
         expect(page).to have_content(song_name)
         expect(page).to have_content(artist_name)
         expect(page).to have_content(genre_2_name)
@@ -116,10 +116,12 @@ describe "Song Forms" do
       end
 
       it "updates the song's genres" do
+        
         uncheck "New Age Garbage"
         check "Hippity Hop"
         click_on "Save"
-
+        page.save_page
+        # binding.pry
         expect(page).to have_content("Successfully updated song.")
         expect(page).to have_content(song_name)
         expect(page).to have_content(artist_name)
