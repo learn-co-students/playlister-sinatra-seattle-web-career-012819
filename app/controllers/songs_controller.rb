@@ -1,5 +1,7 @@
+require 'rack-flash'
 class SongsController < ApplicationController
   # set :views, '../views/songs'
+  use Rack::Flash
 
   get "/songs" do
     # @slug_name = Slugifiable.slug(params[:slug])
@@ -22,7 +24,7 @@ class SongsController < ApplicationController
       genre = Genre.find_by(name: k)
       SongGenre.create(song_id: song.id, genre_id: genre.id)
     end
-    #flash[:message] = "Successfully created song."
+    flash[:message] = "Successfully created song."
     redirect "/songs/#{song.slug}"
   end
 
@@ -63,8 +65,8 @@ class SongsController < ApplicationController
     #update doesnt work
 
     slug_name = song.slug()
-    binding.pry
-    #flash[:message] = "Successfully created song."
+    #binding.pry
+    flash[:message] = "Successfully updated song."
     redirect "/songs/#{slug_name}"
   end
 
