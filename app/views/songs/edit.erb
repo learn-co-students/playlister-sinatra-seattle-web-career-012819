@@ -1,9 +1,6 @@
-<!-- <form  action="/songs/<%=@song.slug%>" method="post">
-  <label for="name"></label>
-  <input type="text" name="name" value="<%=@artist.name%>">
+<form  action="" method="post">
+  <label for="name">Update Artist's name</label>
+  <input type="text" name="name" value='<%= params[:slug] %>'>
   <input type="hidden" name="_method" value="patch">
   <input type="submit" value="Submit">
-</form> -->
-
-
-<h1>testing </h1>
+</form>
