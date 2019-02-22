@@ -1,34 +1,17 @@
 <form action="/songs" method="post">
-  <p><label for="name">Name</label></p>
-  <p><input id="Name" type="text" name="name" value=""></p>
- <select name='artist_id'>
-      <% @artists.each do |artist|   %>
-        <option value="<%= artist.id %>"><%= artist.name %></option>
-      <% end %>
-  </select>
-  <p><input type="submit" value="Submit"></p>
+  <p><label for="song[name]">Name</label></p>
+  <p><input id="Name" type="text" name="song[name]" value=""></p>
+  <p><label for="song[artist_name]">Artist Name</label></p>
+  <p><input id="Artist Name" type="text" name="song[artist_name]" value=""></p>
+ 
+  
+  <%@genres.each do |genre|%>
+  <li>
+  <label for="song[genres][][name]"><%= genre.name %></label>
+  <input id="<%= genre.name %>" type="checkbox" name="song[genres][][name]" value="<%= genre.id %>"><br>
+  </li>
+  <%end%>
+
+   <p><input type="submit" value="Create"></p>
 </form>
 
-
-
-
-
-
-
-<%if false%>
-
-<form action="/books" method="post">
-  <label for="title">Title</label>
-  <input type="text" name="title" value="" placeholder='title here'>
-  <label for="author">Author</label>
-  <select name='author_id'>
-      #<% @authors.each do |author|   %>
-        <option value="<%= author.id %>"><%= author.name %></option>
-      <% end %>
-  </select>
-  <label for="snippet">Snippet</label>
-  <input type="text" name="snippet" value="" placeholder='snippet here'>
-  <button type="submit">Create</button>
-</form> 
-
-<%end%>
