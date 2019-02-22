@@ -7,8 +7,8 @@ class GenresController < ApplicationController
     end
 
     get '/genres/:slug' do
-        requested_genre = Genre.find_by_slug(params['slug'])
-        @genre_name = requested_genre.name
+        @genre = Genre.find_by_slug(params['slug'])
+        @genre_name = @genre.name
         #run slug logic
         erb :show
     end
