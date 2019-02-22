@@ -5,4 +5,9 @@ class ArtistsController < ApplicationController
         @artists = Artist.all
         erb :index
     end
+
+    get '/artists/:slug' do
+        #run slug logic
+        erb :show
+    end
 end
