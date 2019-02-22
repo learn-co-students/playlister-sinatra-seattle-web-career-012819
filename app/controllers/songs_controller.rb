@@ -13,7 +13,7 @@ class SongsController < ApplicationController
     erb :"songs/new"
   end
 
-  post "/songs" do
+  post "/songs/new" do
     artist = Artist.find_or_create_by(name: params[:artist])
     song = Song.create(name: params[:name], artist_id: artist.id)
     #get genres
@@ -22,14 +22,13 @@ class SongsController < ApplicationController
       genre = Genre.find_by(name: k)
       SongGenre.create(song_id: song.id, genre_id: genre.id)
     end
-    flash[:message] = "Successfully created song."
+    #flash[:message] = "Successfully created song."
     redirect "/songs/#{song.slug}"
   end
 
   get "/songs/:slug" do
     # string = Slugifiable.slug(params[:slug])
     @song = Song.find_by_slug(params[:slug])
-    #binding.pry
     @genres = @song.genres
     erb :"songs/show"
   end
@@ -46,21 +45,26 @@ class SongsController < ApplicationController
   patch "/songs/:slug" do
     song = Song.find_by(id: params[:id])
     artist = Artist.find_or_create_by(name: params[:artist])
-    unneccessary_params = ["name", "artist", "_method", "id", "slug"]
+    unneccessary_params = ["name", "Name", "artist", "_method", "id", "slug"]
     genre_params = params.reject {|k,v| unneccessary_params.include? k}
     songgenres = SongGenre.all
     songgenres.each do |ids|
       if ids.song_id == song.id
         ids.delete
+        ids.save
       end
     end
     genre_params.each do |k,v|
       genre = Genre.find_by(name: k)
-      SongGenre.create(song_id: song.id, genre_id: genre.id)
+
+      songGenre = SongGenre.create(song_id: song.id, genre_id: genre.id)
     end
-    song.update(name: params[:name], artist_id: artist.id)
-    slug_name = song.slug(params[:slug])
-      flash[:message] = "Successfully created song."
+    song_params = {"name" => params[:name], "artist_id" => artist.id}
+    song.update(song_params)
+    #update doesnt work
+
+    slug_name = song.slug()
+    #flash[:message] = "Successfully created song."
     redirect "/songs/#{slug_name}"
   end
 

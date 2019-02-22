@@ -3,7 +3,3 @@
     <% @genres.each do |genre| %>
       <h3><a href="/genres/<%=genre.slug %>"><%=genre.name%></a> </h3>
     <% end %>
-
-    <% if flash.has?(:message) %>
-      <%= flash[:message] %>
-    <% end %>
