@@ -3,3 +3,8 @@
 <% @song.genres.each do |genre| %>
   <a href="/genres/<%=genre.slug%>"><%=genre.name%></a>
 <% end %>
+<% if @is_new%>
+  <h2>Successfully created song.</h2>
+<% elsif @was_updated%>
+  <h2>Successfully updated song.</h2>
+<%end%>
