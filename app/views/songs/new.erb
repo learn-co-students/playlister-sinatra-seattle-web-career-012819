@@ -1,3 +1,13 @@
+<form action="/songs" method="post">
+  <p><label for="name">Name</label></p>
+  <p><input id="Name" type="text" name="name" value=""></p>
+ <select name='artist_id'>
+      <% @artists.each do |artist|   %>
+        <option value="<%= artist.id %>"><%= artist.name %></option>
+      <% end %>
+  </select>
+  <p><input type="submit" value="Submit"></p>
+</form>
 
 
 
