@@ -6,8 +6,8 @@ class Slugifiable
     name.gsub(/[!@#$%^&*]/, "-").gsub(" ", "-")
   end
 
-  def self.find_by_slug(slug)
-    slug.gsub("-", " ")
-  end 
+  def self.find_by_slug(id: integer, name: string, artist_id: integer)
+    string.gsub("-", " ")
+  end
 
 end

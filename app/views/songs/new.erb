@@ -1,10 +1,10 @@
-<form action="/songs/new" method="post">
+<form action="/songs/:slug" method="post">
 
   <label for="name">Song Title: </label>
-  <input type="text" name="name" value="">
+  <input type="text" id="Name" name="name" value="">
   <br>
   <label for="name">Song Artist: </label>
-  <input type="text" name="artist" value="">
+  <input type="text" id="Artist Name" name="artist" value="">
   <br>
   <label for="name">Song Genre: </label>
   <br><br>
@@ -14,5 +14,5 @@
         <br>
   <% end %>
   <br>
-  <input type="submit" value="Submit">
+  <input type="submit" id="Create" value="Submit">
 </form>

@@ -1,6 +1,6 @@
 <ul>
 <% @songs.each do |song| %>
-  <%slug_name = Slugifiable.slug(song.name)%>
+  <%slug_name = song.slug()%>
   <li><a href="/songs/<%=slug_name%>"><%=song.name%></a></li>
 <% end %>
 </ul>
