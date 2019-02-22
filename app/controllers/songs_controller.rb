@@ -21,7 +21,7 @@ class SongsController < ApplicationController
     genre_params.each do |k,v|
       genre = Genre.find_by(name: k)
       SongGenre.create(song_id: song.id, genre_id: genre.id)
-    end 
+    end
     redirect "/songs"
   end
 
@@ -34,23 +34,33 @@ class SongsController < ApplicationController
     erb :"songs/show"
   end
 
-  get "/songs/:slug/edit" do 
+  get "/songs/:slug/edit" do
     deslugged = Slugifiable.find_by_slug(params[:slug])
     @song = Song.find_by(name: deslugged)
-    @genres = Genre.all 
-    @song_genre = @song.genres 
+    @genres = Genre.all
+    @song_genre = @song.genres
     @artist = @song.artist
     erb :"songs/edit"
-  end 
+  end
 
-    patch "/songs/:slug" do 
-      artist = Artist.find_or_create_by(name: params[:artist])
-      song = Song.find_by(name: params[:name], artist_id: artist.id)
-      #get genres
-      genre_params = params.reject {|k,v| k == "name" || k == "artist"}
-      genre_params.each do |k,v|
+  patch "/songs/:slug/edit" do
+    song = Song.find_by(id: params[:id])
+    artist = Artist.find_or_create_by(name: params[:artist])
+    unneccessary_params = ["name", "artist", "_method", "id", "slug"]
+    genre_params = params.reject {|k,v| unneccessary_params.include? k}
+    songgenres = SongGenre.all
+    songgenres.each do |ids|
+      if ids.song_id == song.id
+        ids.delete
+      end
+    end
+    genre_params.each do |k,v|
       genre = Genre.find_by(name: k)
       SongGenre.create(song_id: song.id, genre_id: genre.id)
-
+    end
+    song.update(name: params[:name], artist_id: artist.id)
+    slug_name = Slugifiable.slug(params[:slug])
+    redirect "/songs/#{slug_name}"
+  end
 
 end

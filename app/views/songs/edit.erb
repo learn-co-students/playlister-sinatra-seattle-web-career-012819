@@ -3,7 +3,7 @@
 <%slug_name = Slugifiable.slug(@song.name)%>
 <form action="/songs/<%=slug_name%>/edit" method="post">
 <input type="hidden" name="_method" value="patch">
-
+<input type="hidden" name="id" value="<%=@song.id%>">
 
   <label for="name">Song Title: </label>
   <input type="text" name="name" value="<%=@song.name%>">
@@ -14,8 +14,7 @@
   <br>
 
   <label for="name">Song Genre: </label>
-  <br><br> 
-  <%# hidden field with id to be able to find the song in the controller.  %>
+  <br><br>
   <% @genres.each do |genre| %>
     <%if @song_genre.include?(genre)%>
         <input type="checkbox" name="<%=genre.name%>" value=""checked>
